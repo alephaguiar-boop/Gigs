@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Aleph Gigs Pro&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body { background: #0f172a; color: white; font-family: -apple-system, sans-serif; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab-content { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.active { display: block; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card { background: #1e293b; border-radius: 12px; padding: 16px; margin-bottom: 12px; border: 1px solid #334155; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input, textarea, select { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px; width: 100%; color: white; margin-top: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary { background: #3b82f6; padding: 14px; border-radius: 12px; font-weight: bold; text-align: center; width: 100%; display: block; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-item { flex: 1; text-align: center; padding: 12px; font-size: 11px; color: #94a3b8; transition: 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-item.active-nav { color: #3b82f6; font-weight: bold; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="pb-24"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="p-6 pt-12 flex justify-between items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1 id="view-title" class="text-2xl font-bold italic tracking-tight text-blue-400"&gt;ALEPH GIGS&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="syncCalendar()" class="text-xs bg-blue-900/40 border border-blue-500/50 px-3 py-1 rounded-full"&gt;🔄 Sync Cal&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;main class="p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="view-home" class="tab-content active"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="gig-list" class="space-y-2"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="view-settings" class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="font-bold text-blue-400 mb-2"&gt;1. Google Calendar Link&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs text-slate-400 mb-2"&gt;Paste "Secret Address in iCal format" from Google Settings:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="text" id="setting-ical" placeholder="https://calendar.google.com/calendar/ical/..." onchange="saveSettings()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="font-bold text-blue-400 mb-2"&gt;2. Venue Database&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs text-slate-400 mb-2"&gt;Format: Venue Name, Capacity, Ticket Link (one per line)&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;textarea id="setting-venues" rows="5" placeholder="The Verdict, 60, https://verdict.com" onchange="saveSettings()"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-[10px] text-center text-slate-600"&gt;v3.0 - Data stored locally on iPhone&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="view-detail" class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="detail-content"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav class="fixed bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-md border-t border-slate-800 flex pb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div onclick="showView('home')" class="nav-item active-nav" id="nav-home"&gt;&lt;span&gt;GIGS&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div onclick="showView('settings')" class="nav-item" id="nav-settings"&gt;&lt;span&gt;SETTINGS&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let gigs = JSON.parse(localStorage.getItem('aleph_gigs')) || [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let settings = JSON.parse(localStorage.getItem('aleph_settings')) || { ical: '', venues: '' };</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function saveSettings() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>settings.ical = document.getElementById('setting-ical').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>settings.venues = document.getElementById('setting-venues').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('aleph_settings', JSON.stringify(settings));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showView(viewId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.tab-content').forEach(v =&gt; v.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.nav-item').forEach(n =&gt; n.classList.remove('active-nav'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('view-' + viewId).classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('nav-' + viewId).classList.add('active-nav');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(viewId === 'home') renderGigs();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(viewId === 'settings') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('setting-ical').value = settings.ical;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('setting-venues').value = settings.venues;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- CALENDAR SYNC LOGIC ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function syncCalendar() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(!settings.ical) return alert("Add your iCal link in Settings first!");</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Using a CORS proxy to allow browser to read Google's feed</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const proxy = "https://corsproxy.io/?";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const response = await fetch(proxy + encodeURIComponent(settings.ical));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const text = await response.text();</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Simple ICS parser</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const events = text.split("BEGIN:VEVENT");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>events.shift(); // remove header</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>events.forEach(ev =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const title = ev.match(/SUMMARY:(.*)/)?.[1]?.trim();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const rawStart = ev.match(/DTSTART[:;](?:VALUE=DATE:)?(\d+T\d+|\d+)/)?.[1];</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const location = ev.match(/LOCATION:(.*)/)?.[1]?.trim() || "Venue TBC";</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if(title &amp;&amp; rawStart) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const dateStr = `${rawStart.substring(0,4)}-${rawStart.substring(4,6)}-${rawStart.substring(6,8)}`;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const timeStr = rawStart.includes('T') ? `${rawStart.substring(9,11)}:${rawStart.substring(11,13)}` : "20:00";</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>// Check if gig already exists</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>if(!gigs.find(g =&gt; g.title === title &amp;&amp; g.date === dateStr)) {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>const venueData = matchVenue(location || title);</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>gigs.push({</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>id: Date.now() + Math.random(),</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>title, venue: location, date: dateStr, time: timeStr,</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>cap: venueData.cap, link: venueData.link, sold: 0</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>localStorage.setItem('aleph_gigs', JSON.stringify(gigs));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>renderGigs();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>alert("Gigs Updated from Google!");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch(e) { alert("Sync failed. Check your link."); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function matchVenue(name) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const lines = settings.venues.split('\n');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for(let line of lines) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const [vName, cap, link] = line.split(',').map(s =&gt; s.trim());</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if(name.toLowerCase().includes(vName.toLowerCase())) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>return { cap: parseInt(cap) || 50, link: link || '' };</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return { cap: 50, link: '' };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderGigs() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const list = document.getElementById('gig-list');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>list.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gigs.sort((a,b) =&gt; new Date(a.date) - new Date(b.date)).forEach(gig =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const isToday = new Date().toISOString().split('T')[0] === gig.date;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>list.innerHTML += `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="card ${isToday ? 'border-blue-500 bg-blue-900/20' : ''}" onclick="viewDetail(${gig.id})"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h2 class="font-bold text-lg"&gt;${gig.title}&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="text-slate-400 text-xs"&gt;${gig.venue} • ${gig.date}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="text-xs font-mono text-blue-400"&gt;${gig.time}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function viewDetail(id) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const gig = gigs.find(g =&gt; g.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ratio = gig.sold / gig.cap;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const scarcity = ratio &gt; 0.8 ? "🚨 SOLD OUT/LOW TICKETS" : "Tickets Available";</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('detail-content').innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card border-l-4 border-blue-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-2xl font-black"&gt;${gig.title}&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-blue-400 font-bold mb-4"&gt;${gig.venue}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-between text-xs mb-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;Sold: ${gig.sold}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;Cap: ${gig.cap}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="range" min="0" max="${gig.cap}" value="${gig.sold}" onchange="updateSold(${id}, this.value)" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card bg-slate-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2"&gt;Promo Caption&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-sm leading-relaxed" id="cap-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Next up: ${gig.title}&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>📍 ${gig.venue}&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>🗓️ ${gig.date} | ${gig.time}&lt;br&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>${ratio &gt; 0.8 ? '🔥 Low Ticket Alert!' : 'I would love to see you there.'}&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Tickets: ${gig.link || '[Link]'}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="copyCap()" class="btn-primary mt-4 bg-slate-700 text-sm py-2"&gt;Copy for Instagram&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="deleteGig(${id})" class="w-full text-slate-600 text-xs mt-4"&gt;Remove Gig&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showView('detail');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateSold(id, val) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const gig = gigs.find(g =&gt; g.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gig.sold = parseInt(val);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('aleph_gigs', JSON.stringify(gigs));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>viewDetail(id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function deleteGig(id) { if(confirm("Delete?")) { gigs = gigs.filter(g =&gt; g.id !== id); localStorage.setItem('aleph_gigs', JSON.stringify(gigs)); showView('home'); } }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function copyCap() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const text = document.getElementById('cap-box').innerText;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>navigator.clipboard.writeText(text);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert("Copied to clipboard!");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderGigs();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
